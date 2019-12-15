@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 7544245101297457620}
   - component: {fileID: 5030507402327572653}
   - component: {fileID: 2246367346998728571}
+  - component: {fileID: 8600989318609134223}
   m_Layer: 8
   m_Name: Proton
   m_TagString: Untagged
@@ -155,7 +156,7 @@ Transform:
   m_GameObject: {fileID: 5525095014431891518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0.93}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 7757416997014645116}
   m_Father: {fileID: 0}
@@ -254,6 +255,21 @@ MonoBehaviour:
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
   m_materialColorField: 
+--- !u!114 &8600989318609134223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5525095014431891518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8929e3da11588ba4ebce3455a64c4094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Charge: 0
+  m_AccelerationDirection: {x: 0, y: 0, z: 0}
+  m_AccelerationForce: 0
 --- !u!1 &8776402546763867281
 GameObject:
   m_ObjectHideFlags: 0
