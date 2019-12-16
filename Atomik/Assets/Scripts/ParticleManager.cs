@@ -6,6 +6,19 @@ using UnityEngine;
 public class ParticleManager : MonoBehaviour
 {
     public static List<Particle> m_ParticleList;
+    public static void AddToParticleList(Particle particle)
+    {
+        if (m_ParticleList == null)
+            m_ParticleList = new List<Particle>();
+        m_ParticleList.Add(particle);
+    }
+    public static List<Particle> GetParticleList()
+    {
+        if (m_ParticleList == null)
+            m_ParticleList = new List<Particle>();
+
+        return m_ParticleList;
+    }
 
     // Start is called before the first frame update
     void Start()
