@@ -16,7 +16,7 @@ public class Particle : MonoBehaviour
     public float m_AccelerationForce;
     private void Awake()
     {
-        ParticleManager.m_ParticleList.Add(this);
+        ParticleManager.AddToParticleList(this);
 
         UpdateAcceleration();
     }
