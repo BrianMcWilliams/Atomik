@@ -85,6 +85,14 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
+    //Used by GrabParticle.cs script when instantiating a particle and adding it to be the grab candidates
+    public void AddGrabCandidate(OVRGrabbable grabbable)
+    {
+        int refCount = 0;
+        m_grabCandidates.TryGetValue(grabbable, out refCount);
+        m_grabCandidates[grabbable] = refCount + 1;
+    }
+
     protected virtual void Awake()
     {
         m_anchorOffsetPosition = transform.localPosition;
