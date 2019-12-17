@@ -230,13 +230,13 @@ Rigidbody:
   m_GameObject: {fileID: 5525095014431891518}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1000
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!114 &2246367346998728571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +270,9 @@ MonoBehaviour:
   m_Charge: 0
   m_AccelerationDirection: {x: 0, y: 0, z: 0}
   m_AccelerationForce: 0
+  m_Speed: 0
+  m_SpeedDirection: {x: 0, y: 0, z: 0}
+  m_Label: P
 --- !u!1 &8776402546763867281
 GameObject:
   m_ObjectHideFlags: 0

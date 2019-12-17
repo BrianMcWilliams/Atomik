@@ -8,6 +8,8 @@ public class Proton : Particle
     {
         m_Charge = Charge.Positive;
         m_AccelerationDirection = new Vector3();
+        m_Speed = 0.0f;
+        m_SpeedDirection = new Vector3(0, 0, 0);
         m_Label = "P";
     }
 }
