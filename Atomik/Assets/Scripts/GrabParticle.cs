@@ -45,14 +45,5 @@ public class GrabParticle : MonoBehaviour
             OVRGrabbable grabbable = particle.GetComponent<OVRGrabbable>();
             m_rightGrabber.AddGrabCandidate(grabbable);
         }
-
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch) && distanceToLeftHand < m_grabDistance)
-        {
-            GameObject particle = Instantiate(m_particle, m_leftHand.transform.position, Quaternion.identity);
-        }
-        else if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch) && distanceToRightHand < m_grabDistance)
-        {
-            GameObject particle = Instantiate(m_particle, m_rightHand.transform.position, Quaternion.identity);
-        }
     }
 }
