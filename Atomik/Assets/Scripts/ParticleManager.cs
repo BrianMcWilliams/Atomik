@@ -6,11 +6,21 @@ using UnityEngine;
 public class ParticleManager : MonoBehaviour
 {
     public static List<Particle> m_ParticleList;
+    public static List<Particle> m_ChargedParticleList;
     public static void AddToParticleList(Particle particle)
     {
         if (m_ParticleList == null)
             m_ParticleList = new List<Particle>();
         m_ParticleList.Add(particle);
+
+        if (m_ChargedParticleList == null)
+        {
+            m_ChargedParticleList = new List<Particle>();
+        }
+        if(particle.m_Charge != Charge.Neutral)
+        {
+            m_ChargedParticleList.Add(particle);
+        }
     }
     public static List<Particle> GetParticleList()
     {
@@ -19,11 +29,17 @@ public class ParticleManager : MonoBehaviour
 
         return m_ParticleList;
     }
+    public static List<Particle> GetChargedParticleList()
+    {
+        if (m_ChargedParticleList == null)
+            m_ChargedParticleList = new List<Particle>();
 
+        return m_ChargedParticleList;
+    }
     // Start is called before the first frame update
     void Start()
     {
-        m_ParticleList = new List<Particle>();
+        GetParticleList();
     }
 
     // Update is called once per frame
