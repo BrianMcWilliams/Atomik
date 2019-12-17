@@ -14,6 +14,7 @@ public class Particle : MonoBehaviour
     public Charge m_Charge = Charge.INVALID_UNSET;
     public Vector3 m_AccelerationDirection;
     public float m_AccelerationForce;
+    public string m_Label;
     private void Awake()
     {
         ParticleManager.AddToParticleList(this);

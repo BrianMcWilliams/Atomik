@@ -8,5 +8,6 @@ public class Electron : Particle
     {
         m_Charge = Charge.Negative;
         m_AccelerationDirection = new Vector3();
+        m_Label = "E";
     }
 }
