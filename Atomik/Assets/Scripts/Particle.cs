@@ -32,8 +32,6 @@ public class Particle : MonoBehaviour
         Vector3 chargeDirection;
         float sqrDistance = 1.0f;
 
-        Particle orbitParticle = null;
-
         foreach (Particle particle in ParticleManager.GetChargedParticleList())
         {
             if (particle == this)

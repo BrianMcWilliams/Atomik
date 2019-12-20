@@ -119,8 +119,9 @@ MonoBehaviour:
   - {fileID: 3003908085144286231}
   - {fileID: 3004869945581453915}
   m_controller: 1
-  m_parentTransform: {fileID: 0}
-  m_player: {fileID: 0}
+  m_parentTransform: {fileID: 266560355138173250, guid: 531bd4cddaf07b24da0161bc3de0568e,
+    type: 3}
+  m_player: {fileID: 266560355137873260, guid: 531bd4cddaf07b24da0161bc3de0568e, type: 3}
   m_focusColor: {r: 0, g: 0, b: 0, a: 0}
   m_spherecastRadius: 10
   m_noSnapThreshhold: 0.05
