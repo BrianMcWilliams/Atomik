@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0baaa900a3777fc4c92d0022be968aed, type: 2}
+  - {fileID: 2100000, guid: 7b88d01165c419a44b02d92093c40f9b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89,7 +89,7 @@ BoxCollider:
   m_GameObject: {fileID: 830719350428069695}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -105,10 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f84c1e631de3cf4d9ca0ec5d9697f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_particle: {fileID: 6043590409674197942, guid: e4e86813760230349a269856be098466,
+  m_particle: {fileID: 6043590409674197942, guid: 7cea18f30941c9f42b64b98c6c8e1709,
     type: 3}
-  m_leftHand: {fileID: 2904829262449244477, guid: eac2684be59d67942a78a7d0becb5cba,
-    type: 3}
-  m_rightHand: {fileID: 2043677860256404540, guid: 38165b283785d02479b0090ce0c7581a,
-    type: 3}
-  m_grabDistance: 2
+  m_leftHand: {fileID: 0}
+  m_rightHand: {fileID: 0}
+  m_grabDistance: 0.35

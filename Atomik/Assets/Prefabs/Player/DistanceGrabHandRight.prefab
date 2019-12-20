@@ -1077,14 +1077,13 @@ MonoBehaviour:
   - {fileID: 2142845412924540530}
   - {fileID: 2142455595949911450}
   m_controller: 2
-  m_parentTransform: {fileID: 266560355138173250, guid: 531bd4cddaf07b24da0161bc3de0568e,
-    type: 3}
-  m_player: {fileID: 266560355137873260, guid: 531bd4cddaf07b24da0161bc3de0568e, type: 3}
+  m_parentTransform: {fileID: 0}
+  m_player: {fileID: 0}
   m_focusColor: {r: 0, g: 0, b: 0, a: 0}
   m_spherecastRadius: 10
   m_noSnapThreshhold: 0.05
   m_useSpherecast: 0
-  m_preventGrabThroughWalls: 0
+  m_preventGrabThroughWalls: 1
   m_objectPullVelocity: 10
   m_maxGrabDistance: 10
   m_grabObjectsInLayer: 8
