@@ -32,8 +32,6 @@ public class Particle : MonoBehaviour
         Vector3 chargeDirection;
         float sqrDistance = 1.0f;
 
-        Particle orbitParticle = null;
-
         foreach (Particle particle in ParticleManager.GetChargedParticleList())
         {
             if (particle == this)
@@ -57,11 +55,11 @@ public class Particle : MonoBehaviour
                 if (sqrDistance <= 0.01f)
                     sqrDistance = 0.01f; //Prevents wacky hyper accelerations
 
-                force = ((1 / sqrDistance) / 1000000);
+                force = ((1 / sqrDistance) / 100000);
             }
             else
             {
-                force = ((1 / sqrDistance) / 100000);
+                force = ((1 / sqrDistance) / 1000);
             }
 
             normalized *= force;
