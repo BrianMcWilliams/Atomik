@@ -35,7 +35,7 @@ public class Particle : MonoBehaviour
         foreach (Particle particle in ParticleManager.GetChargedParticleList())
         {
             if (particle == this)
-                continue; //Don't calculate yourself
+            continue; //Don't calculate yourself
 
             theirPosition = particle.transform.position;
             chargeDirection = theirPosition - myPosition;
@@ -64,10 +64,11 @@ public class Particle : MonoBehaviour
 
             normalized *= force;
             totalDirection += normalized; //Add the force to my total direction vector;
-        }
 
-        m_AccelerationDirection = totalDirection;
-        m_AccelerationForce = m_AccelerationDirection.sqrMagnitude;
+            m_AccelerationDirection = totalDirection;
+            m_AccelerationForce = m_AccelerationDirection.sqrMagnitude;
+            
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -98,8 +99,11 @@ public class Particle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateAcceleration();
-        UpdateSpeed();
-        UpdatePosition();
+        if (!this.GetComponent<OVRGrabbable>().isGrabbed)
+        {
+            UpdateAcceleration();
+            UpdateSpeed();
+            UpdatePosition();
+        }
     }
 }
