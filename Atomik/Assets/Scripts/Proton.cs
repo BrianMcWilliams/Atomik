@@ -38,6 +38,10 @@ public class Proton : Particle
                 otherParticle.m_AccelerationForce = 0.0f;
                 otherParticle.m_SpeedDirection = Vector3.zero;
                 otherParticle.m_AccelerationDirection = Vector3.zero;
+
+                //Play feedback sound
+                audioData = GetComponent<AudioSource>();
+                audioData.Play(0);
             }
         }
     }

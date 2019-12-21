@@ -18,6 +18,7 @@ public class Particle : MonoBehaviour
     public Vector3 m_SpeedDirection;
     public string m_Label;
     public List<Particle> m_ParticlesToIgnore;
+    public AudioSource audioData;
 
     private void Awake()
     {
@@ -85,7 +86,7 @@ public class Particle : MonoBehaviour
     {
         m_SpeedDirection += m_AccelerationDirection;
         m_Speed = m_SpeedDirection.sqrMagnitude;
-     }
+    }
     private void UpdatePosition()
     {
         if (m_Charge == Charge.Neutral)
