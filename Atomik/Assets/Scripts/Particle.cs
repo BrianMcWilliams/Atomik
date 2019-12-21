@@ -17,9 +17,12 @@ public class Particle : MonoBehaviour
     public float m_Speed = 0.0f;
     public Vector3 m_SpeedDirection;
     public string m_Label;
+    public List<Particle> m_ParticlesToIgnore;
+
     private void Awake()
     {
         ParticleManager.AddToParticleList(this);
+        m_ParticlesToIgnore = new List<Particle>();
     }
 
     private void UpdateAcceleration()
@@ -32,10 +35,11 @@ public class Particle : MonoBehaviour
         Vector3 chargeDirection;
         float sqrDistance = 1.0f;
 
+
         foreach (Particle particle in ParticleManager.GetChargedParticleList())
         {
-            if (particle == this)
-            continue; //Don't calculate yourself
+            if (particle == this || m_ParticlesToIgnore.Contains(particle))
+                continue; //Don't calculate yourself
 
             theirPosition = particle.transform.position;
             chargeDirection = theirPosition - myPosition;
@@ -84,7 +88,7 @@ public class Particle : MonoBehaviour
      }
     private void UpdatePosition()
     {
-        if (m_Charge == Charge.Positive || m_Charge == Charge.Neutral)
+        if (m_Charge == Charge.Neutral)
             return;
         transform.position += m_SpeedDirection;
     }
