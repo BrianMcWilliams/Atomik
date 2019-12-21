@@ -12,3 +12,5 @@ Atomik/Library/StateCache/Hierarchy/
 *.info
 
 Atomik/Library/assetDatabase3
+
+*.log
