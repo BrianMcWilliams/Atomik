@@ -111,4 +111,4 @@ MonoBehaviour:
     type: 3}
   m_rightHand: {fileID: 2043677860256404540, guid: 38165b283785d02479b0090ce0c7581a,
     type: 3}
-  m_grabDistance: 2
+  m_grabDistance: 0.3
