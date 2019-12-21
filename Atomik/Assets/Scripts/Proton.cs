@@ -12,4 +12,17 @@ public class Proton : Particle
         m_SpeedDirection = new Vector3(0, 0, 0);
         m_Label = "P";
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            Particle otherParticle = contact.otherCollider.GetComponent<Particle>();
+            if(otherParticle.m_Charge != Charge.Negative)
+            {
+
+            }
+        }
+    }
+
 }

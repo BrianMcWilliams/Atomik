@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ public class ParticleManager : MonoBehaviour
 {
     public static List<Particle> m_ParticleList;
     public static List<Particle> m_ChargedParticleList;
+    
+    public static List<Tuple<Particle, Particle>> m_BindCandidates;
     public static void AddToParticleList(Particle particle)
     {
         if (m_ParticleList == null)

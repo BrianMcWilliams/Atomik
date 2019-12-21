@@ -1,2 +1,12 @@
 
 Atomik/Library/ProjectSettings.asset
+
+*.dll
+
+Atomik/Library/StateCache/SceneView/
+
+Atomik/Library/StateCache/Hierarchy/
+
+*.pdb
+
+*.info

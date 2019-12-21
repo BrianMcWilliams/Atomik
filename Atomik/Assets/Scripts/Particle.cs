@@ -71,14 +71,6 @@ public class Particle : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        foreach (ContactPoint contact in collision.contacts)
-        {
-            Debug.DrawRay(contact.point, contact.normal, Color.white);
-        }
-    }
-
     void OnGUI()
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
