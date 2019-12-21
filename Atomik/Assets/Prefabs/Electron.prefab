@@ -227,7 +227,6 @@ MonoBehaviour:
   m_Speed: 0
   m_SpeedDirection: {x: 0, y: 0, z: 0}
   m_Label: E
-  m_Joints: []
 --- !u!96 &-6867536159729068771
 TrailRenderer:
   serializedVersion: 2

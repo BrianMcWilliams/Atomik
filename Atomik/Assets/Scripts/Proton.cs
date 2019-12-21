@@ -20,7 +20,8 @@ public class Proton : Particle
             Particle otherParticle = contact.otherCollider.GetComponent<Particle>();
             if(otherParticle.m_Charge != Charge.Negative)
             {
-
+                FixedJoint joint = gameObject.AddComponent(typeof(FixedJoint)) as FixedJoint;
+                joint.connectedBody = otherParticle.gameObject.GetComponent<Rigidbody>();
             }
         }
     }
