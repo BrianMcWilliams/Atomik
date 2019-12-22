@@ -205,6 +205,11 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
+    public Vector3 GetGripPosition()
+    {
+        return m_gripTransform.position;
+    }
+
     protected void CheckForGrabOrRelease(float prevFlex)
     {
         if ((m_prevFlex >= grabBegin) && (prevFlex < grabBegin))
