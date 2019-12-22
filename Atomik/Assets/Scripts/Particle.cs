@@ -89,7 +89,7 @@ public class Particle : MonoBehaviour
     }
     private void UpdatePosition()
     {
-        if (m_Charge == Charge.Neutral)
+        if (m_Charge == Charge.Neutral || m_Charge == Charge.Positive)
             return;
         transform.position += m_SpeedDirection;
     }
