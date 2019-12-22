@@ -7,6 +7,8 @@ Atomik/Library/StateCache/SceneView/
 
 Atomik/Library/StateCache/Hierarchy/
 
+Atomik/Library/metadata/
+
 *.pdb
 
 *.info
