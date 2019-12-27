@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.002241708, g: 0.0040545654, b: 0.0053543686, a: 1}
+  m_IndirectSpecularColor: {r: 0.0019745934, g: 0.00446439, b: 0.0046356097, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -501,7 +501,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0.078125, y: 0.06640625, z: 0.02734375, w: -0.03125}
+  m_BoundingSphereOverride: {x: 0, y: 1e-45, z: 9.1e-44, w: 0.046875}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -912,6 +912,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 266560355137873260, guid: 531bd4cddaf07b24da0161bc3de0568e,
+        type: 3}
+      propertyPath: m_Name
+      value: OVRPlayerController
+      objectReference: {fileID: 0}
     - target: {fileID: 266560355138173250, guid: 531bd4cddaf07b24da0161bc3de0568e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -966,16 +971,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 266560355137873260, guid: 531bd4cddaf07b24da0161bc3de0568e,
-        type: 3}
-      propertyPath: m_Name
-      value: OVRPlayerController
-      objectReference: {fileID: 0}
-    - target: {fileID: 266560355149959332, guid: 531bd4cddaf07b24da0161bc3de0568e,
-        type: 3}
-      propertyPath: m_StepOffset
-      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 531bd4cddaf07b24da0161bc3de0568e, type: 3}

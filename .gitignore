@@ -16,3 +16,9 @@ Atomik/Library/metadata/
 Atomik/Library/assetDatabase3
 
 *.log
+
+Atomik/Assets/Oculus/VR/Plugins/1.43.0/Win/
+
+Atomik/Assets/Oculus/LipSync/Plugins/Win64/
+
+Atomik/Assets/Oculus/Spatializer/Plugins/x86/
