@@ -52,20 +52,12 @@ public class Particle : MonoBehaviour
 
             sqrDistance = chargeDirection.sqrMagnitude;
 
+            sqrDistance += 1; //Make sure it's not a decimal
+            sqrDistance *= 1000.0f;
+
             Vector3 normalized = chargeDirection.normalized;
 
-            float force;
-            if (sqrDistance <= 1.0f)
-            {
-                if (sqrDistance <= 0.01f)
-                    sqrDistance = 0.01f; //Prevents wacky hyper accelerations
-
-                force = ((1 / sqrDistance) / 100000);
-            }
-            else
-            {
-                force = ((1 / sqrDistance) / 1000);
-            }
+            float force = (1 / sqrDistance);
 
             normalized *= force;
             totalDirection += normalized; //Add the force to my total direction vector;
