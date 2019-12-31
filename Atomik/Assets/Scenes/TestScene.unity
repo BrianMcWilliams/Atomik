@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0019745934, g: 0.00446439, b: 0.0046356097, a: 1}
+  m_IndirectSpecularColor: {r: 0.002241708, g: 0.0040545654, b: 0.0053543686, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -141,7 +141,7 @@ PrefabInstance:
     - target: {fileID: 8859616353147270883, guid: 7bd3700b60ca83c4595a08b850138772,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.352
+      value: 0.206
       objectReference: {fileID: 0}
     - target: {fileID: 8859616353147270883, guid: 7bd3700b60ca83c4595a08b850138772,
         type: 3}
@@ -501,7 +501,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1e-45, z: 9.1e-44, w: 0.046875}
+  m_BoundingSphereOverride: {x: 1.3563156e-19, y: 1.13188294e+21, z: 1.9262529e-19,
+    w: 7.714757e+31}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -752,12 +753,12 @@ PrefabInstance:
     - target: {fileID: 6470932939192919805, guid: 0bc1105b19a38eb499763c0fe1df682e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.358
+      value: 0.211
       objectReference: {fileID: 0}
     - target: {fileID: 6470932939192919805, guid: 0bc1105b19a38eb499763c0fe1df682e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.164
+      value: 0.506
       objectReference: {fileID: 0}
     - target: {fileID: 6470932939192919805, guid: 0bc1105b19a38eb499763c0fe1df682e,
         type: 3}
@@ -836,12 +837,12 @@ PrefabInstance:
     - target: {fileID: 830719350428069683, guid: ef9ba47336ab3f649b9be30e214fbd2f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.002
+      value: 0.20699999
       objectReference: {fileID: 0}
     - target: {fileID: 830719350428069683, guid: ef9ba47336ab3f649b9be30e214fbd2f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.164
+      value: -0.185
       objectReference: {fileID: 0}
     - target: {fileID: 830719350428069683, guid: ef9ba47336ab3f649b9be30e214fbd2f,
         type: 3}
