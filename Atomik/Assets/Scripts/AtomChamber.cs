@@ -169,7 +169,7 @@ public class AtomChamber : MonoBehaviour
         {
             totalElectrons += electron;
         }
-        elDetailsText.text = $"You made {el.name}! \nIt consists of {totalElectrons} electron(s) and {totalElectrons} proton(s), \n{el.name} has a weight of {el.molar}";
+        elDetailsText.text = $"You made {el.name}! \nIt consists of {totalElectrons} electron(s) \nand {totalElectrons} proton(s), \n{el.name} has a weight of {el.molar}";
     }
     public void SetCanvasError(string error)
     {
