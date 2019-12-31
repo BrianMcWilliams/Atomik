@@ -164,7 +164,12 @@ public class AtomChamber : MonoBehaviour
         GameObject elDetails = transform.parent.Find("CurrentElementCanvas/ElementDetails").gameObject;
         TextMeshProUGUI elDetailsText = elDetails.GetComponent<TextMeshProUGUI>();
 
-        elDetailsText.text = $"You made {el.name}! \nIt consists of {el.electrons.Count} electron(s) and {el.electrons.Count} proton(s), \n{el.name} has a weight of {el.molar}";
+        int totalElectrons = 0;
+        foreach (int electron in el.electrons)
+        {
+            totalElectrons += electron;
+        }
+        elDetailsText.text = $"You made {el.name}! \nIt consists of {totalElectrons} electron(s) and {totalElectrons} proton(s), \n{el.name} has a weight of {el.molar}";
     }
     public void SetCanvasError(string error)
     {
