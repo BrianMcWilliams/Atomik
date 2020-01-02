@@ -40,11 +40,17 @@ namespace ControllerSelection {
         [HideInInspector]
         public OVRInput.Controller activeController = OVRInput.Controller.RTouch;
 
+        public Transform m_CanvasTransform;
+        OVRRaycaster m_Raycaster;
+
         void Awake() {
             if (trackingSpace == null) {
                 Debug.LogWarning("OVRPointerVisualizer did not have a tracking space set. Looking for one");
                 trackingSpace = OVRInputHelpers.FindTrackingSpace();
             }
+
+            m_Raycaster = m_CanvasTransform.GetComponent<OVRRaycaster>();
+            
         }
 
         void OnEnable() {
@@ -75,11 +81,16 @@ namespace ControllerSelection {
 
         public void SetPointerVisibility() {
             if (trackingSpace != null && activeController != OVRInput.Controller.None) {
-                if (linePointer != null) {
-                    linePointer.enabled = true;
-                }
-                if (gazePointer != null) {
-                    gazePointer.gameObject.SetActive(false);
+                if(m_Raycaster.GetRayCastResultsCount() > 0)
+                {
+                    if (linePointer != null)
+                    {
+                        linePointer.enabled = true;
+                    }
+                    if (gazePointer != null)
+                    {
+                        gazePointer.gameObject.SetActive(false);
+                    }
                 }
             }
             else {
@@ -90,6 +101,7 @@ namespace ControllerSelection {
                     gazePointer.gameObject.SetActive(true);
                 }
             }
+           
         }
 
         void Update() {

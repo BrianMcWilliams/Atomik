@@ -161,6 +161,11 @@ namespace ControllerSelection {
 
         }
 
+        public int GetRayCastResultsCount()
+        {
+            return s_SortedGraphics.Count;
+        }
+
 
         /// <summary>
         /// Perform a raycast into the screen and collect all graphics underneath it.
