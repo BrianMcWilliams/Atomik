@@ -42,22 +42,25 @@ public class ParticleManager : MonoBehaviour
 
     public void RemoveParticles()
     {
-        foreach(Particle particle in m_ParticleList)
+  
+        foreach (Particle particle in m_ParticleList)
         {
             Destroy(particle.gameObject);
         }
-
-        foreach (Particle particle in m_ChargedParticleList)
-        {
-            if(particle.m_Charge == Charge.Positive)
-            {
-                particle.m_ParticlesToIgnore.Clear();
-                Destroy(particle.gameObject);
-            }
-        }
-
         m_ParticleList.Clear();
-        m_ChargedParticleList.Clear();
+
+        if (m_ChargedParticleList != null)
+        {
+            foreach (Particle particle in m_ChargedParticleList)
+            {
+                if(particle.m_Charge == Charge.Positive)
+                {
+                    particle.m_ParticlesToIgnore.Clear();
+                    Destroy(particle.gameObject);
+                }
+            }
+            m_ChargedParticleList.Clear();
+        }
     }
 
     // Start is called before the first frame update
