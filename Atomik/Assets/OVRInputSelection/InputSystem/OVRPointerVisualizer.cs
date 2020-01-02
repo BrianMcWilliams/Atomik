@@ -38,7 +38,7 @@ namespace ControllerSelection {
         public float gazeDrawDistance = 3;
 
         [HideInInspector]
-        public OVRInput.Controller activeController = OVRInput.Controller.None;
+        public OVRInput.Controller activeController = OVRInput.Controller.RTouch;
 
         void Awake() {
             if (trackingSpace == null) {
