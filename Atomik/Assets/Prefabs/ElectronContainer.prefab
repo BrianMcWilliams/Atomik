@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f84c1e631de3cf4d9ca0ec5d9697f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_particle: {fileID: 2006222314604888257, guid: 7cea18f30941c9f42b64b98c6c8e1709,
+  m_particle: {fileID: 2006222314604888257, guid: e4e86813760230349a269856be098466,
     type: 3}
   m_leftHand: {fileID: 2904829262449244477, guid: eac2684be59d67942a78a7d0becb5cba,
     type: 3}
