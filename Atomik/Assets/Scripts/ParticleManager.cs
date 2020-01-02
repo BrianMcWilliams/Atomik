@@ -39,6 +39,16 @@ public class ParticleManager : MonoBehaviour
 
         return m_ChargedParticleList;
     }
+
+    public void RemoveParticles()
+    {
+        foreach(Particle particle in m_ParticleList)
+        {
+            m_ParticleList.Remove(particle);
+            Destroy(particle);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
