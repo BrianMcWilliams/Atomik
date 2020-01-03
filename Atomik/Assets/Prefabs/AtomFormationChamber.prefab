@@ -425,7 +425,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3569661016259734890}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.36626747, y: 1.2346758, z: 4.8912144}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -743,7 +743,7 @@ GameObject:
   - component: {fileID: 3694687736508593782}
   - component: {fileID: 3592134874596393241}
   - component: {fileID: 8326940977823580466}
-  - component: {fileID: 4211806748895056253}
+  - component: {fileID: 491787623}
   m_Layer: 5
   m_Name: CurrentElementCanvas
   m_TagString: Untagged
@@ -819,7 +819,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &4211806748895056253
+--- !u!114 &491787623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -828,16 +828,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7670255575133428113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aaf960227867044282d921171d2d7ac, type: 3}
+  m_Script: {fileID: 11500000, guid: aee672c7b0743724ea7d0d722d5e6aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 3
+  m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 0
-  pointer: {fileID: 0}
-  sortOrder: 0
+    m_Bits: 4294967295
 --- !u!1 &7727011710143343387
 GameObject:
   m_ObjectHideFlags: 0
