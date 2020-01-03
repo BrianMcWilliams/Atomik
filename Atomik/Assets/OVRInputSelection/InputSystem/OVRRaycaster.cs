@@ -161,12 +161,6 @@ namespace ControllerSelection {
 
         }
 
-        public int GetRayCastResultsCount()
-        {
-            return s_SortedGraphics.Count;
-        }
-
-
         /// <summary>
         /// Perform a raycast into the screen and collect all graphics underneath it.
         /// </summary>
@@ -208,6 +202,13 @@ namespace ControllerSelection {
                 results.Add(s_SortedGraphics[i]);
             }
         }
+
+        //check if there are any objects the ray cast is hitting
+        public int GetRayCastResultsCount()
+        {
+            return s_SortedGraphics.Count;
+        }
+
         /// <summary>
         /// Get screen position of worldPosition contained in this RaycastResult
         /// </summary>

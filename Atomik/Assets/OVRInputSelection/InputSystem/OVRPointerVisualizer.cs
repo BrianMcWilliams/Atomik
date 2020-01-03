@@ -80,7 +80,7 @@ namespace ControllerSelection {
         }
 
         public void SetPointerVisibility() {
-            if (trackingSpace != null && activeController != OVRInput.Controller.None) {
+            if (trackingSpace != null && activeController != OVRInput.Controller.None && m_Raycaster.GetRayCastResultsCount() != 0) {
                 if(m_Raycaster.GetRayCastResultsCount() > 0)
                 {
                     if (linePointer != null)
