@@ -92,11 +92,11 @@ namespace ControllerSelection {
                 }
             }
 
-            if ((controller & OVRInput.Controller.LTouch) == OVRInput.Controller.LTouch) {
-                if (OVRInput.Get(joyPadClickButton, OVRInput.Controller.LTouch) || oldController == OVRInput.Controller.None) {
-                    return OVRInput.Controller.LTouch;
-                }
-            }
+           // if ((controller & OVRInput.Controller.LTouch) == OVRInput.Controller.LTouch) {
+              //  if (OVRInput.Get(joyPadClickButton, OVRInput.Controller.LTouch) || oldController == OVRInput.Controller.None) {
+              //      return OVRInput.Controller.LTouch;
+              //  }
+          //  }
 
             if ((controller & OVRInput.Controller.RTrackedRemote) == OVRInput.Controller.RTrackedRemote) {
                 if (OVRInput.Get(joyPadClickButton, OVRInput.Controller.RTrackedRemote) || oldController == OVRInput.Controller.None) {
