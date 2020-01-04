@@ -43,6 +43,8 @@ namespace ControllerSelection {
         public Transform m_CanvasTransform;
         OVRRaycaster m_Raycaster;
 
+        Ray m_SelectionRay;
+
         void Awake() {
             if (trackingSpace == null) {
                 Debug.LogWarning("OVRPointerVisualizer did not have a tracking space set. Looking for one");
@@ -50,7 +52,7 @@ namespace ControllerSelection {
             }
 
             m_Raycaster = m_CanvasTransform.GetComponent<OVRRaycaster>();
-            
+            m_SelectionRay.origin = m_Raycaster.m_PointerOrigin.position;
         }
 
         void OnEnable() {
@@ -71,7 +73,10 @@ namespace ControllerSelection {
         public void SetPointer(Ray ray) {
             if (linePointer != null) {
                 linePointer.SetPosition(0, ray.origin);
-                linePointer.SetPosition(1, ray.origin + ray.direction * rayDrawDistance);
+                if (m_Raycaster.GetRayCastResultsCount() == 0)
+                    linePointer.SetPosition(1, ray.origin + ray.direction * rayDrawDistance);
+                else
+                    linePointer.SetPosition(1, m_Raycaster.GetRaycastHitPosition());
             }
 
             if (gazePointer != null) {
@@ -81,16 +86,13 @@ namespace ControllerSelection {
 
         public void SetPointerVisibility() {
             if (trackingSpace != null && activeController != OVRInput.Controller.None && m_Raycaster.GetRayCastResultsCount() != 0) {
-                if(m_Raycaster.GetRayCastResultsCount() > 0)
+                if (linePointer != null)
                 {
-                    if (linePointer != null)
-                    {
-                        linePointer.enabled = true;
-                    }
-                    if (gazePointer != null)
-                    {
-                        gazePointer.gameObject.SetActive(false);
-                    }
+                    linePointer.enabled = true;
+                }
+                if (gazePointer != null)
+                {
+                    gazePointer.gameObject.SetActive(false);
                 }
             }
             else {
@@ -106,9 +108,9 @@ namespace ControllerSelection {
 
         void Update() {
             activeController = OVRInputHelpers.GetControllerForButton(OVRInput.Button.PrimaryIndexTrigger, activeController);
-            Ray selectionRay = OVRInputHelpers.GetSelectionRay(OVRInput.Controller.RTouch, trackingSpace);
+            m_SelectionRay = OVRInputHelpers.GetSelectionRay(OVRInput.Controller.RTouch, trackingSpace);
             SetPointerVisibility();
-            SetPointer(selectionRay);
+            SetPointer(m_SelectionRay);
         }
     }
 }

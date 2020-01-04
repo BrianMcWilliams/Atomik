@@ -29,6 +29,8 @@ namespace ControllerSelection {
     public class OVRRaycaster : GraphicRaycaster, UnityEngine.EventSystems.IPointerEnterHandler {
         protected OVRRaycaster() { }
 
+        public Transform m_PointerOrigin;
+
         [NonSerialized]
         private Canvas m_Canvas;
 
@@ -207,6 +209,11 @@ namespace ControllerSelection {
         public int GetRayCastResultsCount()
         {
             return s_SortedGraphics.Count;
+        }
+
+        public Vector3 GetRaycastHitPosition()
+        {
+            return s_SortedGraphics[0].worldPos;
         }
 
         /// <summary>

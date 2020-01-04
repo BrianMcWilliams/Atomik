@@ -8,11 +8,13 @@ public class PlayerFlying : MonoBehaviour
     public GameObject m_CenterEyeAnchor;
 
     Rigidbody m_Rigidbody;
+    bool m_MovementEnabled;
 
     // Start is called before the first frame update
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+        m_MovementEnabled = true;
     }
 
     // Update is called once per frame
@@ -23,27 +25,34 @@ public class PlayerFlying : MonoBehaviour
         float primaryIndex = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
         float secondaryIndex = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);
 
-        if (primaryAxis.y >= 0.0f && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) > 0.2)
+        if(m_MovementEnabled)
         {
-            Vector3 velocity = m_Rigidbody.velocity;
-            velocity.y = m_Speed * primaryAxis.y;
-            m_Rigidbody.velocity = velocity;
+            if (primaryAxis.y >= 0.0f && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) > 0.2)
+            {
+                Vector3 velocity = m_Rigidbody.velocity;
+                velocity.y = m_Speed * primaryAxis.y;
+                m_Rigidbody.velocity = velocity;
+            }
+            else if (primaryAxis.y <= 0.0f && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) > 0.2)
+            {
+                Vector3 velocity = m_Rigidbody.velocity;
+                velocity.y = m_Speed * primaryAxis.y;
+                m_Rigidbody.velocity = velocity;
+            }
+            else if (primaryAxis.x != 0.0f || primaryAxis.y != 0.0f)
+            {
+                m_Rigidbody.velocity = m_CenterEyeAnchor.transform.forward * m_Speed * primaryAxis.y + m_CenterEyeAnchor.transform.right * m_Speed * primaryAxis.x;
+            }
+            else if (primaryAxis.x == 0.0f && primaryAxis.y == 0.0f) //stop movement when the joystick isn't being used
+            {
+                m_Rigidbody.velocity = m_CenterEyeAnchor.transform.forward * 0.0f + m_CenterEyeAnchor.transform.right * 0.0f;
+            }
         }
-        else if (primaryAxis.y <= 0.0f && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) > 0.2)
-        {
-            Vector3 velocity = m_Rigidbody.velocity;
-            velocity.y = m_Speed * primaryAxis.y;
-            m_Rigidbody.velocity = velocity;
-        }
-        else if (primaryAxis.x != 0.0f || primaryAxis.y != 0.0f)
-        {
-            m_Rigidbody.velocity = m_CenterEyeAnchor.transform.forward * m_Speed * primaryAxis.y + m_CenterEyeAnchor.transform.right * m_Speed * primaryAxis.x;
-        }
-        else if (primaryAxis.x == 0.0f && primaryAxis.y == 0.0f) //stop movement when the joystick isn't being used
-        {
-            m_Rigidbody.velocity = m_CenterEyeAnchor.transform.forward * 0.0f + m_CenterEyeAnchor.transform.right * 0.0f;
-        }
-  
+    }
+
+    public void SetMovementEnabled(bool value)
+    {
+        m_MovementEnabled = value;
     }
 
 }
