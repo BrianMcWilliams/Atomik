@@ -1227,11 +1227,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3694687736508593782}
     m_Modifications:
-    - target: {fileID: 1756658625647279621, guid: 6277efdca2e16394da19a86cf0266268,
-        type: 3}
-      propertyPath: m_Name
-      value: ClearParticlesButton
-      objectReference: {fileID: 0}
     - target: {fileID: 2215174809818225000, guid: 6277efdca2e16394da19a86cf0266268,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1337,10 +1332,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9023281118810815993, guid: 6277efdca2e16394da19a86cf0266268,
+    - target: {fileID: 1756658625647279621, guid: 6277efdca2e16394da19a86cf0266268,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
+      propertyPath: m_Name
+      value: ClearParticlesButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6277efdca2e16394da19a86cf0266268, type: 3}

@@ -52,7 +52,6 @@ namespace ControllerSelection {
             }
 
             m_Raycaster = m_CanvasTransform.GetComponent<OVRRaycaster>();
-            m_SelectionRay.origin = m_Raycaster.m_PointerOrigin.position;
         }
 
         void OnEnable() {

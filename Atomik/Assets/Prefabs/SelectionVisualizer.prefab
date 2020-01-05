@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6834111946067627620}
   - component: {fileID: 6834111946067627611}
   - component: {fileID: 6834111946067627610}
-  - component: {fileID: 1155967671}
   m_Layer: 0
   m_Name: SelectionVisualizer
   m_TagString: Untagged
@@ -149,22 +148,3 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &1155967671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6834111946067627609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12283131fa5724f44b343883ae474072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trackingSpace: {fileID: 0}
-  linePointer: {fileID: 6834111946067627610}
-  gazePointer: {fileID: 0}
-  rayDrawDistance: 10
-  gazeDrawDistance: 3
-  activeController: 2
-  m_CanvasTransform: {fileID: 0}

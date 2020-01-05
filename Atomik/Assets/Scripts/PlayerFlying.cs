@@ -7,12 +7,14 @@ public class PlayerFlying : MonoBehaviour
     public float m_Speed;
     public GameObject m_CenterEyeAnchor;
 
+    CharacterController m_Controller;
     Rigidbody m_Rigidbody;
     bool m_MovementEnabled;
 
     // Start is called before the first frame update
     void Start()
     {
+        m_Controller = GetComponent<CharacterController>();
         m_Rigidbody = GetComponent<Rigidbody>();
         m_MovementEnabled = true;
     }
@@ -54,5 +56,4 @@ public class PlayerFlying : MonoBehaviour
     {
         m_MovementEnabled = value;
     }
-
 }

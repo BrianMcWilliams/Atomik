@@ -29,8 +29,6 @@ namespace ControllerSelection {
     public class OVRRaycaster : GraphicRaycaster, UnityEngine.EventSystems.IPointerEnterHandler {
         protected OVRRaycaster() { }
 
-        public Transform m_PointerOrigin;
-
         [NonSerialized]
         private Canvas m_Canvas;
 

@@ -45,9 +45,9 @@ public class ParticleManager : MonoBehaviour
   
         foreach (Particle particle in m_ParticleList)
         {
+            particle.m_ParticlesToIgnore.Clear();
             Destroy(particle.gameObject);
         }
-        m_ParticleList.Clear();
 
         if (m_ChargedParticleList != null)
         {
@@ -59,8 +59,10 @@ public class ParticleManager : MonoBehaviour
                     Destroy(particle.gameObject);
                 }
             }
-            m_ChargedParticleList.Clear();
         }
+
+        m_ChargedParticleList.Clear();
+        m_ParticleList.Clear();
     }
 
     // Start is called before the first frame update
