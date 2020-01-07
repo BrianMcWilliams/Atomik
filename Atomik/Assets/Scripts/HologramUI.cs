@@ -5,10 +5,8 @@ using UnityEngine.UI;
 
 public class HologramUI : MonoBehaviour
 {
-    public Transform m_Camera;
+    public OVRCameraRig m_CameraRig;
     public Transform m_Hologram;
-    //The spawn point of the hologram which should always be where the camera is currently facing.
-    public Transform m_HologramPosition;
     //The button that is on the left wrist. 
     public Button m_HologramButton;
     public float m_DistanceFromPlayer;
@@ -38,9 +36,9 @@ public class HologramUI : MonoBehaviour
         if (m_Hidden)
         {
             m_Hidden = false;
-            Vector3 pos = m_HologramPosition.position;
-            m_Hologram.position = pos;
-            m_Hologram.rotation = m_HologramPosition.rotation;
+            //set the position of the hologram to just in front of the player and rotate it so its facing the player
+            m_Hologram.position = m_CameraRig.centerEyeAnchor.position + m_CameraRig.centerEyeAnchor.forward * m_DistanceFromPlayer;
+            m_Hologram.rotation = Quaternion.Euler(0.0f, m_CameraRig.centerEyeAnchor.rotation.eulerAngles.y, 0.0f);
         }
         else
         {
