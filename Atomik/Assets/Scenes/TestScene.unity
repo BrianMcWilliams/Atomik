@@ -603,7 +603,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 8, y: 10, z: -9, w: 8}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 4e-45}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1971,32 +1971,32 @@ PrefabInstance:
       propertyPath: m_HologramButton
       value: 
       objectReference: {fileID: 1358005133}
-    - target: {fileID: 8859616354020461224, guid: 531bd4cddaf07b24da0161bc3de0568e,
+    - target: {fileID: 1124216538025810771, guid: 531bd4cddaf07b24da0161bc3de0568e,
         type: 3}
       propertyPath: m_leftHand
       value: 
       objectReference: {fileID: 1492495799}
-    - target: {fileID: 8859616354020461224, guid: 531bd4cddaf07b24da0161bc3de0568e,
+    - target: {fileID: 1124216538025810771, guid: 531bd4cddaf07b24da0161bc3de0568e,
         type: 3}
       propertyPath: m_rightHand
       value: 
       objectReference: {fileID: 1661395857}
-    - target: {fileID: 830719351232327038, guid: 531bd4cddaf07b24da0161bc3de0568e,
+    - target: {fileID: 5101466893779794089, guid: 531bd4cddaf07b24da0161bc3de0568e,
         type: 3}
       propertyPath: m_leftHand
       value: 
       objectReference: {fileID: 1492495799}
-    - target: {fileID: 830719351232327038, guid: 531bd4cddaf07b24da0161bc3de0568e,
+    - target: {fileID: 5101466893779794089, guid: 531bd4cddaf07b24da0161bc3de0568e,
         type: 3}
       propertyPath: m_rightHand
       value: 
       objectReference: {fileID: 1661395857}
-    - target: {fileID: 6470932939399995300, guid: 531bd4cddaf07b24da0161bc3de0568e,
+    - target: {fileID: 1581592367656387025, guid: 531bd4cddaf07b24da0161bc3de0568e,
         type: 3}
       propertyPath: m_leftHand
       value: 
       objectReference: {fileID: 1492495799}
-    - target: {fileID: 6470932939399995300, guid: 531bd4cddaf07b24da0161bc3de0568e,
+    - target: {fileID: 1581592367656387025, guid: 531bd4cddaf07b24da0161bc3de0568e,
         type: 3}
       propertyPath: m_rightHand
       value: 
