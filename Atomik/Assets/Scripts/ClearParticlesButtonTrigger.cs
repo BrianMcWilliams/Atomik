@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonTrigger : MonoBehaviour
+public class ClearParticlesButtonTrigger : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,8 @@ public class ButtonTrigger : MonoBehaviour
     {
         if(other.tag == "Button")
         {
-
+            ParticleManager particleManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ParticleManager>();
+            particleManager.RemoveParticles();
         }
     }
 }

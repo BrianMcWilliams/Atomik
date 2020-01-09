@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Timer
   - GameManager
+  - Button
   layers:
   - Default
   - TransparentFX
