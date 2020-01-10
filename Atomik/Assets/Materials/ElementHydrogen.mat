@@ -8,9 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ElementHydrogen
-  m_Shader: {fileID: 4800000, guid: 094d90edd31b4c341923e0248b3ea218, type: 3}
-  m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 1
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -66,8 +66,8 @@ Material:
     - _DstBlend: 0
     - _EmissionStrength: 1
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
-    - _GlossyReflections: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 0
     - _Metallic: 0
     - _Mode: 0
     - _NearPlaneFadeDistance: 0.152
@@ -77,10 +77,10 @@ Material:
     - _ReflectionStrength: 1
     - _RimPower: 4.5
     - _SmoothnessTextureChannel: 0
-    - _SpecularHighlights: 1
+    - _SpecularHighlights: 0
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.4338265, g: 0.75735295, b: 0.30628246, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.23113209, g: 0.33173943, b: 1, a: 1}
+    - _EmissionColor: {r: 0.118592024, g: 0.20054238, b: 0.6132076, a: 1}
