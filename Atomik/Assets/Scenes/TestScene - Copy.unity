@@ -120,12 +120,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &45714945 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9007438789823851104, guid: be4b2e6f83ff927458c1d6275d7122c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 9008128624563616152}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &265474483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -202,12 +196,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_leftHand
       value: 
-      objectReference: {fileID: 45714945}
+      objectReference: {fileID: 1906097783}
     - target: {fileID: 8859616353147270880, guid: 7bd3700b60ca83c4595a08b850138772,
         type: 3}
       propertyPath: m_rightHand
       value: 
-      objectReference: {fileID: 2020608276}
+      objectReference: {fileID: 2099635797}
     - target: {fileID: 8859616353147270892, guid: 7bd3700b60ca83c4595a08b850138772,
         type: 3}
       propertyPath: m_Enabled
@@ -498,7 +492,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 2.3510604e-38, y: 8.6455e-41, z: 2.2062e-41, w: NaN}
+  m_BoundingSphereOverride: {x: 3.7996e-41, y: 1.02e-43, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1626,12 +1620,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_rightHand
       value: 
-      objectReference: {fileID: 2020608276}
+      objectReference: {fileID: 2099635797}
     - target: {fileID: 6470932939192919806, guid: 0bc1105b19a38eb499763c0fe1df682e,
         type: 3}
       propertyPath: m_leftHand
       value: 
-      objectReference: {fileID: 45714945}
+      objectReference: {fileID: 1906097783}
     - target: {fileID: 6470932939192919806, guid: 0bc1105b19a38eb499763c0fe1df682e,
         type: 3}
       propertyPath: m_grabDistance
@@ -1639,9 +1633,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bc1105b19a38eb499763c0fe1df682e, type: 3}
---- !u!1 &2020608276 stripped
+--- !u!1 &1906097783 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 9008689834077401542, guid: be4b2e6f83ff927458c1d6275d7122c6,
+  m_CorrespondingSourceObject: {fileID: 5311014477671425509, guid: be4b2e6f83ff927458c1d6275d7122c6,
     type: 3}
   m_PrefabInstance: {fileID: 9008128624563616152}
   m_PrefabAsset: {fileID: 0}
@@ -1716,12 +1710,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_rightHand
       value: 
-      objectReference: {fileID: 2020608276}
+      objectReference: {fileID: 2099635797}
     - target: {fileID: 830719350428069680, guid: ef9ba47336ab3f649b9be30e214fbd2f,
         type: 3}
       propertyPath: m_leftHand
       value: 
-      objectReference: {fileID: 45714945}
+      objectReference: {fileID: 1906097783}
     - target: {fileID: 830719350428069680, guid: ef9ba47336ab3f649b9be30e214fbd2f,
         type: 3}
       propertyPath: m_grabDistance
@@ -1735,6 +1729,12 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef9ba47336ab3f649b9be30e214fbd2f, type: 3}
+--- !u!1 &2099635797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1892614663716553074, guid: be4b2e6f83ff927458c1d6275d7122c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 9008128624563616152}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6834111945747110148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1919,6 +1919,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerController
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007438789823851104, guid: be4b2e6f83ff927458c1d6275d7122c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008689834077401542, guid: be4b2e6f83ff927458c1d6275d7122c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9008128624293361788, guid: be4b2e6f83ff927458c1d6275d7122c6,
         type: 3}
