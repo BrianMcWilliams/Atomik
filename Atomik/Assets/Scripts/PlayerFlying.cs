@@ -23,19 +23,7 @@ public class PlayerFlying : MonoBehaviour
         float primaryIndex = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
         float secondaryIndex = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);
 
-        if (primaryAxis.y >= 0.0f && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) > 0.2)
-        {
-            Vector3 velocity = m_Rigidbody.velocity;
-            velocity.y = m_Speed * primaryAxis.y;
-            m_Rigidbody.velocity = velocity;
-        }
-        else if (primaryAxis.y <= 0.0f && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) > 0.2)
-        {
-            Vector3 velocity = m_Rigidbody.velocity;
-            velocity.y = m_Speed * primaryAxis.y;
-            m_Rigidbody.velocity = velocity;
-        }
-        else if (primaryAxis.x != 0.0f || primaryAxis.y != 0.0f)
+        if (primaryAxis.x != 0.0f || primaryAxis.y != 0.0f)
         {
             m_Rigidbody.velocity = m_CenterEyeAnchor.transform.forward * m_Speed * primaryAxis.y + m_CenterEyeAnchor.transform.right * m_Speed * primaryAxis.x;
         }

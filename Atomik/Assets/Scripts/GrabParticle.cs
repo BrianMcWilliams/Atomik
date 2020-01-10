@@ -32,7 +32,7 @@ public class GrabParticle : MonoBehaviour
         if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch) && distanceToLeftHand < m_grabDistance)
         {
             //instantiate a particle and add it as a grab candidate for the hand
-            GameObject particle = Instantiate(m_particle, m_leftGrabber.GetGripPosition(), Quaternion.identity);
+            GameObject particle = Instantiate(m_particle, m_leftHand.transform.position, Quaternion.identity);
             OVRGrabbable grabbable = particle.GetComponent<OVRGrabbable>();
             m_leftGrabber.AddGrabCandidate(grabbable);
         }
@@ -41,7 +41,7 @@ public class GrabParticle : MonoBehaviour
         if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch) && distanceToRightHand < m_grabDistance)
         {
             //instantiate a particle and add it as a grab candidate for the hand
-            GameObject particle = Instantiate(m_particle, m_rightGrabber.GetGripPosition(), Quaternion.identity);
+            GameObject particle = Instantiate(m_particle, m_rightHand.transform.position, Quaternion.identity);
             OVRGrabbable grabbable = particle.GetComponent<OVRGrabbable>();
             m_rightGrabber.AddGrabCandidate(grabbable);
         }
