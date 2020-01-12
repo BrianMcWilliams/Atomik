@@ -198,11 +198,6 @@ PrefabInstance:
       propertyPath: m_rightHand
       value: 
       objectReference: {fileID: 1085155862}
-    - target: {fileID: 8859616353147270880, guid: 7bd3700b60ca83c4595a08b850138772,
-        type: 3}
-      propertyPath: m_grabDistance
-      value: 0.25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bd3700b60ca83c4595a08b850138772, type: 3}
 --- !u!224 &265719703 stripped
@@ -1703,11 +1698,6 @@ PrefabInstance:
       propertyPath: m_rightHand
       value: 
       objectReference: {fileID: 1085155862}
-    - target: {fileID: 6470932939192919806, guid: 0bc1105b19a38eb499763c0fe1df682e,
-        type: 3}
-      propertyPath: m_grabDistance
-      value: 0.25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bc1105b19a38eb499763c0fe1df682e, type: 3}
 --- !u!1001 &2087195426
@@ -1787,11 +1777,6 @@ PrefabInstance:
       propertyPath: m_rightHand
       value: 
       objectReference: {fileID: 1085155862}
-    - target: {fileID: 830719350428069680, guid: ef9ba47336ab3f649b9be30e214fbd2f,
-        type: 3}
-      propertyPath: m_grabDistance
-      value: 0.25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef9ba47336ab3f649b9be30e214fbd2f, type: 3}
 --- !u!1001 &6834111945747110148

@@ -202,4 +202,4 @@ MonoBehaviour:
     type: 3}
   m_leftHand: {fileID: 0}
   m_rightHand: {fileID: 0}
-  m_grabDistance: 0.3
+  m_grabDistance: 0.25
