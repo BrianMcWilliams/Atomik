@@ -5,14 +5,19 @@ using UnityEngine;
 public class PlayerFlying : MonoBehaviour
 {
     public float m_Speed;
+    public float RotationRatchet = 45.0f;
     public GameObject m_CenterEyeAnchor;
+    public bool SnapRotation = true;
 
-    Rigidbody m_Rigidbody;
+    private bool ReadyToSnapTurn;
+    private float SimulationRate = 60f;
+    //The rate of rotation when using a gamepad.
+    public float RotationAmount = 1.5f;
+    private float RotationScaleMultiplier = 1.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_Rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -25,13 +30,42 @@ public class PlayerFlying : MonoBehaviour
 
         if (primaryAxis.x != 0.0f || primaryAxis.y != 0.0f)
         {
-            m_Rigidbody.velocity = m_CenterEyeAnchor.transform.forward * m_Speed * primaryAxis.y + m_CenterEyeAnchor.transform.right * m_Speed * primaryAxis.x;
+            Vector3 movement = m_CenterEyeAnchor.transform.forward * m_Speed * primaryAxis.y + m_CenterEyeAnchor.transform.right * m_Speed * primaryAxis.x;
+            transform.Translate(movement * Time.deltaTime, Space.World);
         }
-        else if (primaryAxis.x == 0.0f && primaryAxis.y == 0.0f) //stop movement when the joystick isn't being used
+
+        //handle snap rotation using the right joystick.
+        Vector3 euler = transform.rotation.eulerAngles;
+        float rotateInfluence = SimulationRate * Time.deltaTime * RotationAmount * RotationScaleMultiplier;
+        if (SnapRotation)
         {
-            m_Rigidbody.velocity = m_CenterEyeAnchor.transform.forward * 0.0f + m_CenterEyeAnchor.transform.right * 0.0f;
+            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
+            {
+                if (ReadyToSnapTurn)
+                {
+                    euler.y -= RotationRatchet;
+                    ReadyToSnapTurn = false;
+                }
+            }
+            else if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight))
+            {
+                if (ReadyToSnapTurn)
+                {
+                    euler.y += RotationRatchet;
+                    ReadyToSnapTurn = false;
+                }
+            }
+            else
+            {
+                ReadyToSnapTurn = true;
+            }
         }
-  
+        else
+        {
+            euler.y += secondaryAxis.x * rotateInfluence;
+        }
+
+        transform.rotation = Quaternion.Euler(euler);
     }
 
 }
