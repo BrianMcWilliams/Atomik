@@ -324,9 +324,9 @@ GameObject:
   - component: {fileID: 3249122356863553463}
   - component: {fileID: 7544245101297457620}
   - component: {fileID: 5030507402327572653}
-  - component: {fileID: 2246367346998728571}
   - component: {fileID: 8600989318609134223}
   - component: {fileID: -7308287605617985987}
+  - component: {fileID: -7405676429827763618}
   m_Layer: 8
   m_Name: Proton
   m_TagString: Untagged
@@ -426,24 +426,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
---- !u!114 &2246367346998728571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5525095014431891518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d1a7708e76601b4ea829921c33bc624, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_allowOffhandGrab: 1
-  m_snapPosition: 0
-  m_snapOrientation: 0
-  m_snapOffset: {fileID: 0}
-  m_grabPoints: []
-  m_materialColorField: 
 --- !u!114 &8600989318609134223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,6 +543,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-7405676429827763618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5525095014431891518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
 --- !u!1 &8776402546763867281
 GameObject:
   m_ObjectHideFlags: 0
