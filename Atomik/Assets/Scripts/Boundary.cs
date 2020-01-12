@@ -25,6 +25,7 @@ public class Boundary : MonoBehaviour
             //since neutrons are not in the list, no need to call Remove()
             if(particle.m_Charge != Charge.Neutral)
                 ParticleManager.GetChargedParticleList().Remove(particle);
+            ParticleManager.m_ParticleList.Remove(particle);
             Destroy(particle.gameObject);
         }
     }

@@ -483,7 +483,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.7e-44, y: 1.1e-44, z: 6e-45, w: 1.1754945e-38}
+  m_BoundingSphereOverride: {x: -6.9e-44, y: NaN, z: 7.1e-44, w: 4.5918e-41}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -596,6 +596,26 @@ PrefabInstance:
     - target: {fileID: 9008128624293361788, guid: be4b2e6f83ff927458c1d6275d7122c6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911215822637710806, guid: be4b2e6f83ff927458c1d6275d7122c6,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 554203908889939211, guid: be4b2e6f83ff927458c1d6275d7122c6,
+        type: 3}
+      propertyPath: m_grabVolumes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292273927025474041, guid: be4b2e6f83ff927458c1d6275d7122c6,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 942719712472574898, guid: be4b2e6f83ff927458c1d6275d7122c6,
+        type: 3}
+      propertyPath: m_grabVolumes.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -143,9 +143,7 @@ public class OVRGrabber : MonoBehaviour
 
 	void FixedUpdate()
 	{
-        //if (operatingWithoutOVRCameraRig)
-          //  OnUpdatedAnchors();
-
+        CalculateHandPhysics();
     }
 
     // Hands follow the touch anchors by calling MovePosition each frame to reach the anchor.
@@ -186,6 +184,17 @@ public class OVRGrabber : MonoBehaviour
         m_prevFlex = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller);
 
         CheckForGrabOrRelease(prevFlex);
+    }
+
+    //Calculate the hand physics (Force, motion) when moving and punching particles
+    void CalculateHandPhysics()
+    {
+        Vector3 handPos = OVRInput.GetLocalControllerPosition(m_controller);
+        Quaternion handRot = OVRInput.GetLocalControllerRotation(m_controller);
+        Vector3 destPos = m_parentTransform.TransformPoint(m_anchorOffsetPosition + handPos);
+        Quaternion destRot = m_parentTransform.rotation * handRot * m_anchorOffsetRotation;
+        GetComponent<Rigidbody>().MovePosition(destPos);
+        GetComponent<Rigidbody>().MoveRotation(destRot);
     }
 
     void OnDestroy()

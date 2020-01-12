@@ -42,7 +42,6 @@ public class ParticleManager : MonoBehaviour
 
     public void RemoveParticles()
     {
-  
         foreach (Particle particle in m_ParticleList)
         {
             Destroy(particle.gameObject);
