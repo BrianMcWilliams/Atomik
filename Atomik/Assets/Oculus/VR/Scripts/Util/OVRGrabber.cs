@@ -53,7 +53,16 @@ public class OVRGrabber : MonoBehaviour
     [SerializeField]
     protected GameObject m_player;
 
-	protected bool m_grabVolumeEnabled = true;
+    [SerializeField]
+    OVRCameraRig m_CameraRig;
+
+    [SerializeField]
+    Transform m_LeftHandTransform;
+
+    [SerializeField]
+    Transform m_RightHandTransform;
+
+    protected bool m_grabVolumeEnabled = true;
     protected Vector3 m_lastPos;
     protected Quaternion m_lastRot;
     protected Quaternion m_anchorOffsetRotation;
@@ -128,13 +137,16 @@ public class OVRGrabber : MonoBehaviour
                 m_parentTransform.rotation = Quaternion.identity;
             }
         }
+       
+        m_CameraRig.UpdatedAnchors += OnUpdatedAnchors; 
     }
 
 	void FixedUpdate()
 	{
-		if (operatingWithoutOVRCameraRig)
-			OnUpdatedAnchors();
-	}
+        //if (operatingWithoutOVRCameraRig)
+          //  OnUpdatedAnchors();
+
+    }
 
     // Hands follow the touch anchors by calling MovePosition each frame to reach the anchor.
     // This is done instead of parenting to achieve workable physics. If you don't require physics on
@@ -162,12 +174,27 @@ public class OVRGrabber : MonoBehaviour
 		CheckForGrabOrRelease(prevFlex);
     }
 
+    //Instead of using OnUpdatedAnchors(), we can use this function to update the hand positions for when the
+    //hands are children of the PlayerController
+    void OnUpdatedAnchors(OVRCameraRig rig)
+    {
+        m_LeftHandTransform.SetPositionAndRotation(rig.leftHandAnchor.position, rig.leftHandAnchor.rotation);
+        m_RightHandTransform.SetPositionAndRotation(rig.rightHandAnchor.position, rig.rightHandAnchor.rotation);
+
+        float prevFlex = m_prevFlex;
+        // Update values from inputs
+        m_prevFlex = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller);
+
+        CheckForGrabOrRelease(prevFlex);
+    }
+
     void OnDestroy()
     {
         if (m_grabbedObj != null)
         {
             GrabEnd();
         }
+        m_CameraRig.UpdatedAnchors -= OnUpdatedAnchors;
     }
 
     void OnTriggerEnter(Collider otherCollider)
