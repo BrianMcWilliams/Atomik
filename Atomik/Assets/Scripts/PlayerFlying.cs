@@ -25,13 +25,14 @@ public class PlayerFlying : MonoBehaviour
 
         if (primaryAxis.x != 0.0f || primaryAxis.y != 0.0f)
         {
-            m_Rigidbody.velocity = m_CenterEyeAnchor.transform.forward * m_Speed * primaryAxis.y + m_CenterEyeAnchor.transform.right * m_Speed * primaryAxis.x;
+           // m_Rigidbody.velocity = m_CenterEyeAnchor.transform.forward * m_Speed * primaryAxis.y + m_CenterEyeAnchor.transform.right * m_Speed * primaryAxis.x;
+            Vector3 movement = m_CenterEyeAnchor.transform.forward * m_Speed * primaryAxis.y + m_CenterEyeAnchor.transform.right * m_Speed * primaryAxis.x;
+            transform.Translate(movement * Time.deltaTime, Space.World);
         }
         else if (primaryAxis.x == 0.0f && primaryAxis.y == 0.0f) //stop movement when the joystick isn't being used
         {
             m_Rigidbody.velocity = m_CenterEyeAnchor.transform.forward * 0.0f + m_CenterEyeAnchor.transform.right * 0.0f;
         }
-  
     }
 
 }
