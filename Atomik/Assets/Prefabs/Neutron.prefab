@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 3481033306736806544}
   - component: {fileID: 1618122308376499595}
   - component: {fileID: 1767371131438476761}
-  - component: {fileID: 6415368024649870272}
+  - component: {fileID: 6028189770889603918}
   m_Layer: 8
   m_Name: Neutron
   m_TagString: Untagged
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Label: N
   m_ParticlesToIgnore: []
   audioData: {fileID: 0}
---- !u!114 &6415368024649870272
+--- !u!114 &6028189770889603918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6043590409674197942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d1a7708e76601b4ea829921c33bc624, type: 3}
+  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_allowOffhandGrab: 1
@@ -276,7 +276,6 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
-  m_materialColorField: 
 --- !u!1 &6280972428728946783
 GameObject:
   m_ObjectHideFlags: 0

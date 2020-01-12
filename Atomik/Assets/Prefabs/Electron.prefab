@@ -91,10 +91,10 @@ GameObject:
   - component: {fileID: 9136778060779103547}
   - component: {fileID: 9037818053000261027}
   - component: {fileID: 2141693700777068131}
-  - component: {fileID: 5136596744890383033}
   - component: {fileID: 1418986256082585007}
   - component: {fileID: -6867536159729068771}
   - component: {fileID: -2618303300163487488}
+  - component: {fileID: 4362729941285686320}
   m_Layer: 8
   m_Name: Electron
   m_TagString: Untagged
@@ -194,24 +194,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
---- !u!114 &5136596744890383033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006222314604888257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d1a7708e76601b4ea829921c33bc624, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_allowOffhandGrab: 1
-  m_snapPosition: 0
-  m_snapOrientation: 0
-  m_snapOffset: {fileID: 0}
-  m_grabPoints: []
-  m_materialColorField: 
 --- !u!114 &1418986256082585007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +330,23 @@ GUITexture:
   m_RightBorder: 1
   m_TopBorder: 1
   m_BottomBorder: 1
+--- !u!114 &4362729941285686320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006222314604888257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
 --- !u!1 &2242529690907645006
 GameObject:
   m_ObjectHideFlags: 0
