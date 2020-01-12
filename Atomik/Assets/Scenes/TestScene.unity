@@ -483,7 +483,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 7e-45, z: 3.3733e-41, w: 6e-44}
+  m_BoundingSphereOverride: {x: 0, y: 9.404242e-38, z: 1.7579e-41, w: 1.7757e-41}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -534,6 +534,12 @@ Transform:
 --- !u!4 &794140963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9010770095532046256, guid: be4b2e6f83ff927458c1d6275d7122c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1129075045}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &801331622 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7736066508645205524, guid: be4b2e6f83ff927458c1d6275d7122c6,
     type: 3}
   m_PrefabInstance: {fileID: 1129075045}
   m_PrefabAsset: {fileID: 0}
@@ -698,6 +704,46 @@ PrefabInstance:
       propertyPath: m_gripTransform
       value: 
       objectReference: {fileID: 794140963}
+    - target: {fileID: 6133861344115549494, guid: be4b2e6f83ff927458c1d6275d7122c6,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6133861344119061690, guid: be4b2e6f83ff927458c1d6275d7122c6,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6133861344115426368, guid: be4b2e6f83ff927458c1d6275d7122c6,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 489501632098511931, guid: be4b2e6f83ff927458c1d6275d7122c6,
+        type: 3}
+      propertyPath: m_AudioSource
+      value: 
+      objectReference: {fileID: 801331622}
+    - target: {fileID: 6133861344115474132, guid: be4b2e6f83ff927458c1d6275d7122c6,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6133861344110792406, guid: be4b2e6f83ff927458c1d6275d7122c6,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -1.1500102
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008128625290464761, guid: be4b2e6f83ff927458c1d6275d7122c6,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008128625290464761, guid: be4b2e6f83ff927458c1d6275d7122c6,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be4b2e6f83ff927458c1d6275d7122c6, type: 3}
 --- !u!1 &1223145583 stripped

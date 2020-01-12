@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Timer
   - GameManager
+  - WristButton
+  - SoundManager
   layers:
   - Default
   - TransparentFX
