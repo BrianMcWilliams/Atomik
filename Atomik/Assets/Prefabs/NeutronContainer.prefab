@@ -106,11 +106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f84c1e631de3cf4d9ca0ec5d9697f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_particle: {fileID: 6043590409674197942, guid: e4e86813760230349a269856be098466,
+  m_particle: {fileID: 6043590409674197942, guid: 7cea18f30941c9f42b64b98c6c8e1709,
     type: 3}
   m_leftHand: {fileID: 0}
   m_rightHand: {fileID: 0}
-  m_grabDistance: 0.3
+  m_grabDistance: 0.25
 --- !u!1 &8827911538069435672
 GameObject:
   m_ObjectHideFlags: 0
