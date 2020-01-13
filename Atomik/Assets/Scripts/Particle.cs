@@ -68,12 +68,6 @@ public class Particle : MonoBehaviour
         }
     }
 
-    void OnGUI()
-    {
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
-
-        GUI.Box(new Rect(screenPos.x, Screen.height - screenPos.y, 100, 50), m_Label);
-    } 
     private void UpdateSpeed()
     {
         m_SpeedDirection += m_AccelerationDirection;
