@@ -20,6 +20,7 @@ public class Particle : MonoBehaviour
     public List<Particle> m_ParticlesToIgnore;
     public AudioSource audioData;
 
+
     private void Awake()
     {
         ParticleManager.AddToParticleList(this);

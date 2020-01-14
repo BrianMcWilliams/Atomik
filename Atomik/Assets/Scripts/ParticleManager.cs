@@ -40,7 +40,27 @@ public class ParticleManager : MonoBehaviour
         return m_ChargedParticleList;
     }
 
-    public void RemoveParticles()
+    public static void DestroyParticle(Particle particle)
+    {
+        if (particle)
+        {
+            //for protons and electrons, we need to also remove them from m_ChargedParticleList
+            if (particle.m_Charge != Charge.Neutral)
+                ParticleManager.GetChargedParticleList().Remove(particle);
+            ParticleManager.m_ParticleList.Remove(particle);
+
+            //get the particle system of the particle about to be destroyed and play it
+          //  ParticleSystem explosion = Instantiate(particle.m_Explosion, particle.transform.position, particle.transform.rotation);
+         //   explosion.Play();
+         //   particle.GetComponent<Renderer>().enabled = false;
+
+        //    Destroy(explosion, explosion.main.duration);
+            Destroy(particle.gameObject);
+        }
+    }
+
+    //Called when the "Clear Particles" button is clicked
+    public void DestroyAllParticles()
     {
         foreach (Particle particle in m_ParticleList)
         {

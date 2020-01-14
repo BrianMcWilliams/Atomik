@@ -483,7 +483,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: -6.9e-44, y: NaN, z: 7.1e-44, w: 4.5918e-41}
+  m_BoundingSphereOverride: {x: 0.03125, y: 0.1484375, z: 0.02734375, w: -0.03125}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -702,6 +702,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 7918101048829529981, guid: 741e8750be64f2d48a2686b0445bfd6d,
+        type: 3}
+      propertyPath: m_Explosion
+      value: 
+      objectReference: {fileID: 5873417063097101245, guid: d5c8e8786894bf746b9b722615caed9c,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 741e8750be64f2d48a2686b0445bfd6d, type: 3}
 --- !u!1 &1085155862 stripped
