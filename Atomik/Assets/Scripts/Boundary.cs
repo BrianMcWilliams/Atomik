@@ -31,7 +31,6 @@ public class Boundary : MonoBehaviour
             ParticleSystem explosion = Instantiate(m_Explosion, particle.transform.position, Quaternion.identity);
             explosion.Play();
             Destroy(explosion, explosion.main.duration);
-
             Destroy(particle.gameObject);
         }
     }
