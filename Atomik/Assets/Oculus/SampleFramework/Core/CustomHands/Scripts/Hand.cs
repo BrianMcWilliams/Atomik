@@ -92,8 +92,9 @@ namespace OVRTouchSample
 
             float flex = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller);
 
+            //Enable the mesh collider when making a fist.
             bool collisionEnabled = m_grabber.grabbedObject == null && flex >= THRESH_COLLISION_FLEX;
-            CollisionEnable(collisionEnabled);
+            //CollisionEnable(collisionEnabled);
 
             UpdateAnimStates();
         }
@@ -107,6 +108,10 @@ namespace OVRTouchSample
         }
 
         private void LateUpdate()
+        {
+        }
+
+        private void ScaleMeshCollider()
         {
             // Hand's collision grows over a short amount of time on enable, rather than snapping to on, to help somewhat with interpenetration issues.
             if (m_collisionEnabled && m_collisionScaleCurrent + Mathf.Epsilon < COLLIDER_SCALE_MAX)

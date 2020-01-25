@@ -13,7 +13,7 @@ under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR COND
 ANY KIND, either express or implied. See the License for the specific language governing
 permissions and limitations under the License.
 ************************************************************************************/
-
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +23,27 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class OVRGrabber : MonoBehaviour
 {
+    //This struct allows for configurable per-joint settings
+    private struct FingerBone
+    {
+        public readonly float Radius;
+        public readonly float Height;
+
+        public FingerBone(float radius, float height)
+        {
+            Radius = radius;
+            Height = height;
+        }
+
+        public Vector3 GetCenter(bool isLeftHand)
+        {
+            return new Vector3(((isLeftHand) ? -1 : 1) * Height / 2.0f, 0, 0);
+        }
+    };
+
+    private readonly FingerBone Phalanges = new FingerBone(0.01f, 0.03f);
+    private readonly FingerBone Metacarpals = new FingerBone(0.01f, 0.05f);
+
     // Grip trigger thresholds for picking up objects, with some hysteresis.
     public float grabBegin = 0.55f;
     public float grabEnd = 0.35f;
@@ -68,11 +89,15 @@ public class OVRGrabber : MonoBehaviour
     protected Quaternion m_anchorOffsetRotation;
     protected Vector3 m_anchorOffsetPosition;
     protected float m_prevFlex;
-	protected OVRGrabbable m_grabbedObj = null;
+    protected float m_prevFlexHelper;
+    protected OVRGrabbable m_grabbedObj = null;
     protected Vector3 m_grabbedObjectPosOff;
     protected Quaternion m_grabbedObjectRotOff;
-	protected Dictionary<OVRGrabbable, int> m_grabCandidates = new Dictionary<OVRGrabbable, int>();
-	protected bool operatingWithoutOVRCameraRig = true;
+    protected Dictionary<OVRGrabbable, int> m_grabCandidates = new Dictionary<OVRGrabbable, int>();
+    protected bool operatingWithoutOVRCameraRig = true;
+
+    public Transform m_handSkeleton;
+    List<Collider> m_handColliders;
 
     /// <summary>
     /// The currently grabbed object.
@@ -82,7 +107,7 @@ public class OVRGrabber : MonoBehaviour
         get { return m_grabbedObj; }
     }
 
-	public void ForceRelease(OVRGrabbable grabbable)
+    public void ForceRelease(OVRGrabbable grabbable)
     {
         bool canRelease = (
             (m_grabbedObj != null) &&
@@ -107,26 +132,26 @@ public class OVRGrabber : MonoBehaviour
         m_anchorOffsetPosition = transform.localPosition;
         m_anchorOffsetRotation = transform.localRotation;
 
-		// If we are being used with an OVRCameraRig, let it drive input updates, which may come from Update or FixedUpdate.
+        // If we are being used with an OVRCameraRig, let it drive input updates, which may come from Update or FixedUpdate.
 
-		OVRCameraRig rig = null;
-		if (transform.parent != null && transform.parent.parent != null)
-			rig = transform.parent.parent.GetComponent<OVRCameraRig>();
+        OVRCameraRig rig = null;
+        if (transform.parent != null && transform.parent.parent != null)
+            rig = transform.parent.parent.GetComponent<OVRCameraRig>();
 
-		if (rig != null)
-		{
-			rig.UpdatedAnchors += (r) => {OnUpdatedAnchors();};
-			operatingWithoutOVRCameraRig = false;
-		}
+        if (rig != null)
+        {
+            rig.UpdatedAnchors += (r) => { OnUpdatedAnchors(); };
+            operatingWithoutOVRCameraRig = false;
+        }
     }
 
     protected virtual void Start()
     {
         m_lastPos = transform.position;
         m_lastRot = transform.rotation;
-        if(m_parentTransform == null)
+        if (m_parentTransform == null)
         {
-            if(gameObject.transform.parent != null)
+            if (gameObject.transform.parent != null)
             {
                 m_parentTransform = gameObject.transform.parent.transform;
             }
@@ -137,12 +162,74 @@ public class OVRGrabber : MonoBehaviour
                 m_parentTransform.rotation = Quaternion.identity;
             }
         }
-       
-        m_CameraRig.UpdatedAnchors += OnUpdatedAnchors; 
+
+        m_CameraRig.UpdatedAnchors += OnUpdatedAnchors;
+
+        m_handColliders = new List<Collider>();
+
+        foreach (Transform bone in m_handSkeleton)
+        {
+            if (!bone.name.Contains("ignore"))
+            {
+                CreateCollider(bone, m_handColliders);
+            }
+        }
     }
 
-	void FixedUpdate()
-	{
+    //Check for the fingers and palm of the hand
+    //When we get a finger, create a capsule collider and when we get a palm, create a sphere collider
+    void CreateCollider(Transform transform, List<Collider> colliders)
+    {
+        //check that the hand does not contain a capsule or sphere collider
+        if (!transform.gameObject.GetComponent(typeof(CapsuleCollider)) && !transform.gameObject.GetComponent(typeof(SphereCollider)) && transform.name.Contains("hands"))
+        {
+            //check if the transform name contains one of these strings, which means its a finger
+            if (transform.name.Contains("thumb") || transform.name.Contains("index") || transform.name.Contains("middle") || transform.name.Contains("ring") || transform.name.Contains("pinky"))
+            {
+                //The transform ending with 0 is an additional bone of the pinky that does not need to be 
+                if (!transform.name.EndsWith("0"))
+                {
+                    CapsuleCollider collider = transform.gameObject.AddComponent<CapsuleCollider>();
+                    if (!transform.name.EndsWith("1"))
+                    {
+                        collider.radius = Phalanges.Radius;
+                        collider.height = Phalanges.Height;
+                        collider.center = Phalanges.GetCenter(transform.name.Contains("_l_"));
+                        collider.direction = 0;
+                        colliders.Add(collider);
+                        //if the part of the finger has a child that we need to add a collider to
+                        if (transform.childCount > 0 && !transform.GetChild(0).name.Contains("ignore"))
+                        {
+                            CreateCollider(transform.GetChild(0), colliders);
+                        }
+                    }
+                    else
+                    {
+                        collider.radius = Metacarpals.Radius;
+                        collider.height = Metacarpals.Height;
+                        collider.center = Metacarpals.GetCenter(transform.name.Contains("_l_"));
+                        collider.direction = 0;
+                        colliders.Add(collider);
+                        //if the part of the finger has a child that we need to add a collider to
+                        if (transform.childCount > 0 && !transform.GetChild(0).name.Contains("ignore"))
+                        {
+                            CreateCollider(transform.GetChild(0), colliders);
+                        }
+                    }
+                }
+            }
+            else if (transform.name.Contains("grip")) //this is a sphere collider for the palm
+            {
+                SphereCollider collider = transform.gameObject.AddComponent<SphereCollider>();
+                collider.radius = 0.015f;
+                collider.center = new Vector3(((transform.name.Contains("_l_")) ? -1 : 1) * 0.01f, 0.01f, 0.02f);
+                colliders.Add(collider);
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
         CalculateHandPhysics();
     }
 
@@ -165,11 +252,12 @@ public class OVRGrabber : MonoBehaviour
         m_lastPos = transform.position;
         m_lastRot = transform.rotation;
 
-		float prevFlex = m_prevFlex;
-		// Update values from inputs
-		m_prevFlex = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller);
+        float prevFlex = m_prevFlex;
+        m_prevFlexHelper = prevFlex;
+        // Update values from inputs
+        m_prevFlex = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller);
 
-		CheckForGrabOrRelease(prevFlex);
+        CheckForGrabOrRelease(prevFlex);
     }
 
     //Instead of using OnUpdatedAnchors(), we can use this function to update the hand positions for when the
@@ -182,6 +270,13 @@ public class OVRGrabber : MonoBehaviour
         float prevFlex = m_prevFlex;
         // Update values from inputs
         m_prevFlex = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller);
+
+        //Activate the hand colliders when making a fist after a short time 
+        //so that grabbing objects is possible. Otherwise they fly away.
+        if (m_prevFlex > 0.55f)
+            StartCoroutine("ActivateHandColliders", 0.5f);
+        else
+            DisableHandColliders();
 
         CheckForGrabOrRelease(prevFlex);
     }
@@ -209,18 +304,19 @@ public class OVRGrabber : MonoBehaviour
     void OnTriggerEnter(Collider otherCollider)
     {
         // Get the grab trigger
-		OVRGrabbable grabbable = otherCollider.GetComponent<OVRGrabbable>() ?? otherCollider.GetComponentInParent<OVRGrabbable>();
+        OVRGrabbable grabbable = otherCollider.GetComponent<OVRGrabbable>() ?? otherCollider.GetComponentInParent<OVRGrabbable>();
         if (grabbable == null) return;
 
         // Add the grabbable
         int refCount = 0;
         m_grabCandidates.TryGetValue(grabbable, out refCount);
         m_grabCandidates[grabbable] = refCount + 1;
+
     }
 
     void OnTriggerExit(Collider otherCollider)
     {
-		OVRGrabbable grabbable = otherCollider.GetComponent<OVRGrabbable>() ?? otherCollider.GetComponentInParent<OVRGrabbable>();
+        OVRGrabbable grabbable = otherCollider.GetComponent<OVRGrabbable>() ?? otherCollider.GetComponentInParent<OVRGrabbable>();
         if (grabbable == null) return;
 
         // Remove the grabbable
@@ -261,11 +357,11 @@ public class OVRGrabber : MonoBehaviour
     protected virtual void GrabBegin()
     {
         float closestMagSq = float.MaxValue;
-		OVRGrabbable closestGrabbable = null;
+        OVRGrabbable closestGrabbable = null;
         Collider closestGrabbableCollider = null;
 
         // Iterate grab candidates and find the closest grabbable candidate
-		foreach (OVRGrabbable grabbable in m_grabCandidates.Keys)
+        foreach (OVRGrabbable grabbable in m_grabCandidates.Keys)
         {
             bool canGrab = !(grabbable.isGrabbed && !grabbable.allowOffhandGrab);
             if (!canGrab)
@@ -305,10 +401,10 @@ public class OVRGrabber : MonoBehaviour
             m_lastRot = transform.rotation;
 
             // Set up offsets for grabbed object desired position relative to hand.
-            if(m_grabbedObj.snapPosition)
+            if (m_grabbedObj.snapPosition)
             {
                 m_grabbedObjectPosOff = m_gripTransform.localPosition;
-                if(m_grabbedObj.snapOffset)
+                if (m_grabbedObj.snapOffset)
                 {
                     Vector3 snapOffset = m_grabbedObj.snapOffset.position;
                     if (m_controller == OVRInput.Controller.LTouch) snapOffset.x = -snapOffset.x;
@@ -325,7 +421,7 @@ public class OVRGrabber : MonoBehaviour
             if (m_grabbedObj.snapOrientation)
             {
                 m_grabbedObjectRotOff = m_gripTransform.localRotation;
-                if(m_grabbedObj.snapOffset)
+                if (m_grabbedObj.snapOffset)
                 {
                     m_grabbedObjectRotOff = m_grabbedObj.snapOffset.rotation * m_grabbedObjectRotOff;
                 }
@@ -375,13 +471,13 @@ public class OVRGrabber : MonoBehaviour
     {
         if (m_grabbedObj != null)
         {
-			OVRPose localPose = new OVRPose { position = OVRInput.GetLocalControllerPosition(m_controller), orientation = OVRInput.GetLocalControllerRotation(m_controller) };
+            OVRPose localPose = new OVRPose { position = OVRInput.GetLocalControllerPosition(m_controller), orientation = OVRInput.GetLocalControllerRotation(m_controller) };
             OVRPose offsetPose = new OVRPose { position = m_anchorOffsetPosition, orientation = m_anchorOffsetRotation };
             localPose = localPose * offsetPose;
 
-			OVRPose trackingSpace = transform.ToOVRPose() * localPose.Inverse();
-			Vector3 linearVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerVelocity(m_controller);
-			Vector3 angularVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerAngularVelocity(m_controller);
+            OVRPose trackingSpace = transform.ToOVRPose() * localPose.Inverse();
+            Vector3 linearVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerVelocity(m_controller);
+            Vector3 angularVelocity = trackingSpace.orientation * OVRInput.GetLocalControllerAngularVelocity(m_controller);
 
             GrabbableRelease(linearVelocity, angularVelocity);
         }
@@ -390,10 +486,23 @@ public class OVRGrabber : MonoBehaviour
         GrabVolumeEnable(true);
     }
 
+    private IEnumerator ActivateHandColliders(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        for (int i = 0; i < m_handColliders.Count; i++)
+            m_handColliders[i].enabled = true;
+    }
+
+    private void DisableHandColliders()
+    {
+        for (int i = 0; i < m_handColliders.Count; i++)
+            m_handColliders[i].enabled = false;
+    }
+
     protected void GrabbableRelease(Vector3 linearVelocity, Vector3 angularVelocity)
     {
         m_grabbedObj.GrabEnd(linearVelocity, angularVelocity);
-        if(m_parentHeldObject) m_grabbedObj.transform.parent = null;
+        if (m_parentHeldObject) m_grabbedObj.transform.parent = null;
         SetPlayerIgnoreCollision(m_grabbedObj.gameObject, false);
         m_grabbedObj = null;
     }
@@ -418,7 +527,7 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
-	protected virtual void OffhandGrabbed(OVRGrabbable grabbable)
+    protected virtual void OffhandGrabbed(OVRGrabbable grabbable)
     {
         if (m_grabbedObj == grabbable)
         {
@@ -426,19 +535,19 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
-	protected void SetPlayerIgnoreCollision(GameObject grabbable, bool ignore)
-	{
-		if (m_player != null)
-		{
-			Collider playerCollider = m_player.GetComponent<Collider>();
-			if (playerCollider != null)
-			{
-				Collider[] colliders = grabbable.GetComponents<Collider>();
-				foreach (Collider c in colliders)
-				{
-					Physics.IgnoreCollision(c, playerCollider, ignore);
-				}
-			}
-		}
-	}
+    protected void SetPlayerIgnoreCollision(GameObject grabbable, bool ignore)
+    {
+        if (m_player != null)
+        {
+            Collider playerCollider = m_player.GetComponent<Collider>();
+            if (playerCollider != null)
+            {
+                Collider[] colliders = grabbable.GetComponents<Collider>();
+                foreach (Collider c in colliders)
+                {
+                    Physics.IgnoreCollision(c, playerCollider, ignore);
+                }
+            }
+        }
+    }
 }
